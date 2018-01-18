@@ -39,6 +39,12 @@ server.listen(port, () => {
   debug(`Listening on ${port}`);
 });
 
+process.on('uncaughtException', (err) => {
+  debug('Whoops! Something went wrong!');
+  if (err) {
+    debug(err.stack);
+  }
+});
 
 // // heartbeat
 // function noop() {}
